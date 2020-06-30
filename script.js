@@ -1,3 +1,4 @@
+
 function WeatherDashboard() {
 
     $(document).ready(function () {
@@ -8,10 +9,8 @@ function WeatherDashboard() {
             console.log("Got the click");
             var value = $(this).siblings("input").val().trim();
             console.log(value);
-            displayDetails(value);
-        
-            
-
+            displayDetails(value)
+          
         });
 });
 }
