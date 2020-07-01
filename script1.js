@@ -61,6 +61,11 @@ function displayDetails(value){
         displayWeatherDetails(value);
     });
 
+    let getDate = function(days){
+        var currentDay = moment().format(); 
+        return (moment(currentDay).add(days, 'days').format('MM/DD/YYYY')); 
+        
+    }
     function displayWeatherDetails(value){
         // "https://api.openweathermap.org/data/2.5/weather?" +
         // "q=Bujumbura,Burundi&appid=" + APIKey  5a9ba99aa270a73fe708b6e2422c838d;
@@ -73,6 +78,8 @@ function displayDetails(value){
         var date;
         var uvIndexVal;
         var city;
+        var lat;
+        var dateISO;
         var wf = "";
         var APIKey="5a9ba99aa270a73fe708b6e2422c838d";
         var queryURL = "http://api.openweathermap.org/data/2.5/weather?" +"q=" +value +"&appid=" + APIKey +"&units=5";
@@ -84,13 +91,38 @@ function displayDetails(value){
         }).then(function(response) {    
 
           console.log(JSON.stringify(response));  
-          tempF = Math.round((response.main.temp - 273.15) * 1.80 + 32);
-          humidityVal = response.main.humidity;
-          speed = response.wind.speed;
           icon = response.weather[0].icon;
           long = response.coord.lon;
           lat = response.coord.lat;
           city = response.name;
+          var iconimg = "http://openweathermap.org/img/w/" + icon + ".png";
+          cityDetails.append($(".city").text(city).append(getDate(0)).append($("#icon").attr("src",iconimg)));
+          temperature.text("Temperature : " +Math.round((response.main.temp - 273.15) * 1.80 + 32)+ "°F");
+          humidity.text("Humidity : " +response.main.humidity + "%");
+          windSpeed.text("Wind Speed : " +response.wind.speed );
+
+        
+            // console.log('Received data:', response) // For testing
+            // var wf = "";
+            // // moment().add(1, 'days').calendar();       // Tomorrow at 2:12 PM
+            // // moment().add(3, 'days').calendar();    
+            // $.each(response, function(index, val) {
+            //   wf += "<p>" // Opening paragraph tag
+            //   wf += moment().add(index, 'days').calendar();     
+            //   wf += "<br/><br/>";
+            //   wf += "<img src='https://openweathermap.org/img/w/" + val.weather[index].icon + ".png'>" // Icon
+            //   wf += "<br/><br/>";
+            //   wf += "Temperature :" + Math.round((val.main.temp - 273.15) * 1.80 + 32) + "°F" // Temperature
+            //   wf += "<br/><br/>";
+            //   wf += "Humidity : " +val.main.humidity;
+            //   wf += "</p>" // Closing paragraph tag
+            //   console.log("index" +index);
+            //   console.log("Main Temp: " +val.main.temp);
+            //   console.log("Weather Description" +val.weather[0].description);
+            // });
+            // console.log(wf);
+            // $("FivedayForecast").html(wf);
+             
  
             var queryURL1 = "https://api.openweathermap.org/data/2.5/uvi?&appid=" + APIKey+ "&lat="+lat+ "&lon=" +long;
 
@@ -99,27 +131,17 @@ function displayDetails(value){
                 method: "GET"
             }).then(function(response1) {  
                 console.log(JSON.stringify(response1));
-                date = response1.date;
                 uvIndexVal = response1.value;
+                uvIndex.text("UV Index : " +uvIndexVal);
               
             });
-
-        var iconimg = "http://openweathermap.org/img/w/" + icon + ".png";
-    
-        cityDetails.append($(".city").text(city).append($(".date").text(moment(date).format("MM/DD/YYYY"))).append($("#icon").attr("src",iconimg)));
-        
-        temperature.text("Temperature : " +tempF+ "°F");
-        humidity.text("Humidity : " +humidityVal + "%");
-        windSpeed.text("Wind Speed : " +speed );
-         uvIndex.text("UV Index : " +uvIndexVal);
 
          weatherDetails.append(cityDetails);
          weatherDetails.append(temperature);
          weatherDetails.append(humidity);
          weatherDetails.append(windSpeed);
          weatherDetails.append(uvIndex);
-
-     
+  
         });
     }
 

@@ -14,9 +14,14 @@
 
 .weather-details{
     /* border : 1px solid black; */
-    height:250px;
+    /* height:250px;
     margin-top: 40px;
-    padding: 20px;
+    padding: 20px; */
+    margin:20px;
+    padding:20px;
+    border-radius:3px;
+    border: 1px solid white;
+    font-size: 14px;
     
 }
 #search {
@@ -25,6 +30,15 @@
    
   }
 
+  .FivedayForecast{
+    padding:5px;
+    background-color: rgb(129, 116, 65);
+    color:white;
+    border-radius:10px;
+    margin:5px;
+    text-align:center;
+
+  }
   
   #sampleSearch { 
     box-sizing: border-box;
@@ -32,7 +46,6 @@
     flex-direction: column;
     margin: 20px 5px 20px 5px;
     background-color:white;
-    border: 1px solid #dfdfdf;
     border-radius: 5px;
   }
   
@@ -42,4 +55,5 @@
     cursor: pointer;
     background-color: white;
     font-size: 14px;
+    width:25%;
   }
