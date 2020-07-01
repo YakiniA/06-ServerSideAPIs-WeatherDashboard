@@ -72,6 +72,7 @@ function displayDetails(value){
         var long;
         var date;
         var uvIndexVal;
+        var city;
         var wf = "";
         var APIKey="5a9ba99aa270a73fe708b6e2422c838d";
         var queryURL = "http://api.openweathermap.org/data/2.5/weather?" +"q=" +value +"&appid=" + APIKey +"&units=5";
@@ -89,38 +90,27 @@ function displayDetails(value){
           icon = response.weather[0].icon;
           long = response.coord.lon;
           lat = response.coord.lat;
-
-          $.each(response.list, function(index, val) {
-            wf += "<p>" // Opening paragraph tag
-            wf += "<b>Day " + index + "</b>: " // Day
-            wf += val.main.temp + "&degC" // Temperature
-            wf += "<span> | " + val.weather[0].description + "</span>"; // Description
-            wf += "<img src='https://openweathermap.org/img/w/" + val.weather[0].icon + ".png'>" // Icon
-            wf += "</p>" // Closing paragraph tag
-          });
-                   
+          city = response.name;
+ 
             var queryURL1 = "https://api.openweathermap.org/data/2.5/uvi?&appid=" + APIKey+ "&lat="+lat+ "&lon=" +long;
 
             $.ajax({
                 url: queryURL1,
                 method: "GET"
-            }).then(function(response) {  
-                console.log(JSON.stringify(response));
-                date = response.date;
-                uvIndexVal = response.value;
+            }).then(function(response1) {  
+                console.log(JSON.stringify(response1));
+                date = response1.date;
+                uvIndexVal = response1.value;
               
             });
-         var iconimg = "http://openweathermap.org/img/w/" + icon + ".png";
-         var city = response.name  ;
-         var city = $(".city").text(city);
-         var date =  $(".date").text(moment(date).format("MM/DD/YYYY"));
-         var iconImg = $("#icon").attr("src",iconimg);
 
-         cityDetails.append(city).append(date).append(iconImg);
-       
-         temperature.text("Temperature : " +tempF);
-         humidity.text("Humidity : " +humidityVal);
-         windSpeed.text("Wind Speed : " +speed);
+        var iconimg = "http://openweathermap.org/img/w/" + icon + ".png";
+    
+        cityDetails.append($(".city").text(city).append($(".date").text(moment(date).format("MM/DD/YYYY"))).append($("#icon").attr("src",iconimg)));
+        
+        temperature.text("Temperature : " +tempF+ "°F");
+        humidity.text("Humidity : " +humidityVal + "%");
+        windSpeed.text("Wind Speed : " +speed );
          uvIndex.text("UV Index : " +uvIndexVal);
 
          weatherDetails.append(cityDetails);
@@ -128,10 +118,11 @@ function displayDetails(value){
          weatherDetails.append(humidity);
          weatherDetails.append(windSpeed);
          weatherDetails.append(uvIndex);
-       
-      });
 
+     
+        });
     }
+
 
 WeatherDashboard();
 displayDetails(value);

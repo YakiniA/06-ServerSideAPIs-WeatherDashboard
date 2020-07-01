@@ -19,15 +19,12 @@
     padding: 20px;
     
 }
-
 #search {
     display:flex;
     margin-left:5px;
+   
   }
 
-  .input-container{
-  width: 20%;
-  }
   
   #sampleSearch { 
     box-sizing: border-box;
