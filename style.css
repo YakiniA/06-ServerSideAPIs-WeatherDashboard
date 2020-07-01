@@ -5,9 +5,36 @@
  */
 
 .weather-details{
-    border : 1px solid black;
-    height:150px;
+    /* border : 1px solid black; */
+    height:250px;
     margin-top: 40px;
     padding: 20px;
     
 }
+
+#search {
+    display:flex;
+    margin-left:5px;
+  }
+
+  .input-container{
+  width: 20%;
+  }
+  
+  #sampleSearch { 
+    box-sizing: border-box;
+    display: flex; 
+    flex-direction: column;
+    margin: 20px 5px 20px 5px;
+    background-color:white;
+    border: 1px solid #dfdfdf;
+    border-radius: 5px;
+  }
+  
+  #sampleSearch button { 
+    border: 0.25px solid darkslategrey;
+    padding: 20px;
+    cursor: pointer;
+    background-color: white;
+    font-size: 14px;
+  }
