@@ -1,8 +1,16 @@
-/* .material-icons{
-    float:right;
-    margin-right: -30px;
-    /* margin-top:-35px; }
- */
+ .img-responsive{
+   
+    max-height: 350px; 
+  }
+ 
+ .text-block {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 
 .weather-details{
     /* border : 1px solid black; */
