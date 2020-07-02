@@ -5,7 +5,8 @@ var temperature = $(".temperature");
 var humidity = $(".humidity");
 var windSpeed = $(".wind-speed");
 var uvIndex = $(".uvIndex");
-var setErrorDisplay = false;
+var APIKey="5a9ba99aa270a73fe708b6e2422c838d";
+// var setErrorDisplay = false;
 
 function WeatherDashboard() {
 
@@ -29,19 +30,29 @@ function saveToLocalStorage(value){
       
         if(localStorage.getItem("searchHistory")){
             searchHistory =  JSON.parse(localStorage.getItem("searchHistory"));
-            if(searchHistory.length>12){
+            if(searchHistory.length>6){
                 localStorage.removeItem('searchHistory');
             }
         }else{
             searchHistory = [];
         }
        if((value!=null ) && (value!="" )){  
-        console.log(setErrorDisplay);
-          if(!setErrorDisplay){
-           
+        // console.log(setErrorDisplay);
+          // if(!setErrorDisplay){
+            // api.openweathermap.org/data/2.5/weather?q=London
+          
+            var queryURL = "http://api.openweathermap.org/data/2.5/weather?&q=" +value +"&appid=" +APIKey;
+       
+            $.ajax({
+             url: queryURL,
+             method: "GET",
+            }).then (function(response) {    
+              console.log(response);
+            });
+            if(response.message != "city not found"){
             searchHistory.push(value);
             localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
-          }
+            }
         }
      
 }
@@ -65,7 +76,6 @@ function saveToLocalStorage(value){
         var lat;
         var long;
      
-        var APIKey="5a9ba99aa270a73fe708b6e2422c838d";
         var queryURL = "http://api.openweathermap.org/data/2.5/forecast?" +"&q=" +value +"&appid=" + APIKey +"&units=metric";
        
          $.ajax({
@@ -125,7 +135,7 @@ function saveToLocalStorage(value){
       $("#errorDisplay").attr("style" , "background-color: red; width:250px;").html("No data available for that city. Sorry!!");
      
     }
-    setErrorDisplay = true;
+    
   }
 });
 }
