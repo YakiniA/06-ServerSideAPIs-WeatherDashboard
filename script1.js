@@ -118,7 +118,7 @@ function displayDetails(value){
          weatherDetails.append(windSpeed);
          weatherDetails.append(uvIndex);
 
-    for(var i=1; i<=39; i++){
+    for(var i=1; i<=5; i++){
     //  if(list[i].dt_txt === getDate(i)){
        var forecast5day = function(i) {
        return  ('<div>' +
