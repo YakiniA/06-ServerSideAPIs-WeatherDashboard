@@ -69,18 +69,11 @@ function displayDetails(value){
     function displayWeatherDetails(value){
         // "https://api.openweathermap.org/data/2.5/weather?" +
         // "q=Bujumbura,Burundi&appid=" + APIKey  5a9ba99aa270a73fe708b6e2422c838d;
-        var tempF;
-        var humidityVal;
-        var speed;
+      
         var icon;
         var lat;
         var long;
-        var date;
-        var uvIndexVal;
-        var city;
-        var lat;
-        var dateISO;
-        var wf = "";
+     
         var APIKey="5a9ba99aa270a73fe708b6e2422c838d";
         var queryURL = "http://api.openweathermap.org/data/2.5/forecast?" +"&q=" +value +"&appid=" + APIKey +"&units=metric";
        
@@ -108,7 +101,7 @@ function displayDetails(value){
                 method: "GET",
            success:function(response1) {  
                 console.log(JSON.stringify(response1));
-                uvIndex.text("UV Index : " +response1.value);
+                uvIndex.attr("style", "backgroundColor: red").text("UV Index : " +response1.value);
            }
          });
 
@@ -128,20 +121,8 @@ function displayDetails(value){
         `<p class="temperature">Temperature: ${response.list[i].main.temp}&nbsp;°F</p>` +
         `<p class="humidity">Humidity: ${response.list[i].main.humidity}&nbsp;%"</p>` +
         '</div>');
-
-            // return( $("<p>");
-            // wf += getDate(i);    
-            // wf += $("<br/><br/>");
-            // wf += $("<img src='https:openweathermap.org/img/w/" + response.weather[i].icon + ".png'>"); 
-            // wf += $("<br/><br/>");
-            // wf += $("Temperature :" + Math.round((response.main[i].temp - 273.15) * 1.80 + 32) + "°F"); 
-            // wf += $("<br/><br/>");
-            // wf += $("Humidity : " +response.main[i].humidity);
-            // wf += $("</p>");
-          }
-        // }
-          console.log(wf);
-        //  var iconImag =  ${response.list[i].weather[0].icon};
+        }
+       
           $(".FivedayForecast").append(forecast5day(i)); 
         }
 }
