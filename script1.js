@@ -16,9 +16,9 @@ function WeatherDashboard() {
             console.log("Got the click");
             value = $(this).siblings("input").val().trim();
             console.log(value);
-            if(value === ""){
-                $("#errorDisplay").attr("style" , "background-color: red; width:250px;").text("Please select/enter a city");
-            }
+            // if(value === ""){
+            //     $("#errorDisplay").attr("style" , "background-color: red; width:250px;").text("Please select/enter a city");
+            // }
             displayDetails(value);
             displayWeatherDetails(value);
         });
@@ -36,12 +36,13 @@ function displayDetails(value){
         }else{
             searchHistory = [];
         }
-        if((value!=null ) && (value!="" )){  
-          
+       if((value!=null ) && (value!="" )){  
+      
             searchHistory.push(value);
             localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
-            
-        }
+          }
+        
+      
 }
 
     $("#sampleSearch button").on( "click", function(event) {
@@ -116,7 +117,13 @@ function displayDetails(value){
        
           $(".FivedayForecast").append(forecast5day(i)); 
         }
-}
+},error: function () {
+    if ($("#search input").val() === ""){
+      $("#errorDisplay").attr("style" , "background-color: red; width:250px;").html("Please enter/select a city"); 
+    }else{
+      $("#errorDisplay").attr("style" , "background-color: red; width:250px;").html("No data available for that city. Sorry!!");
+    }
+  }
 });
 }
 
