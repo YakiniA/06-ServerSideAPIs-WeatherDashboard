@@ -117,9 +117,10 @@ function displayDetails(value){
          weatherDetails.append(humidity);
          weatherDetails.append(windSpeed);
          weatherDetails.append(uvIndex);
-
+         $(".FivedayForecast").empty();
     for(var i=1; i<=5; i++){
     //  if(list[i].dt_txt === getDate(i)){
+        
        var forecast5day = function(i) {
        return  ('<div>' +
         '<p class="date">' + getDate(i) + '</p>' +  
