@@ -23,7 +23,6 @@
      
 </head>
   <body>
-       <!-- Navbar goes here -->
     <div class= "img-container">
         <img src="Assets/weatherPhoto.jpg" class="img-responsive" width="100%" alt="Responsive image">
         <div class="text-block">
@@ -31,40 +30,29 @@
         </div>
     </div>
     
-          <!-- <div class="container"> -->
-         
-            <!-- <div class="row">
+          <section id="searchCol">
+              <h5 style="margin-bottom:25px;">Search Another City:</h5>
+              <div id="search">    
+                    <input type="text" style="margin-bottom:30px;" name="searchText">
+                    <button id="submitBtn" class="fa fa-search"></button>        
+              </div>
+                        
+              <div id = "errorDisplay" ></div>
+              <div id="sampleSearch">
+                <button>Dubai</button> 
+                <button>Chennai</button>
+                <button>Chicago</button>
+                <button>London</button>
+                <button>Florida</button>
+                <button>Boston</button>
+                <button>Delhi</button>
+                <button>Burlington</button>
+                <button>Sandy</button>
+              </div>
 
-              <div class="col-sm-3">  -->
-            <section id="searchCol">
-                  <h5 style="margin-bottom:25px;">Search Another City:</h5>
-                  <div id="search">    
-                        <input type="text" style="margin-bottom:30px;" name="searchText">
-                        <button id="submitBtn" class="fa fa-search"></button>        
-                  </div>
-                            
-                  <div id = "errorDisplay" ></div>
-                  <div id="sampleSearch">
-                    <button>Dubai</button> 
-                    <button>Chennai</button>
-                    <button>Chicago</button>
-                    <button>London</button>
-                    <button>Florida</button>
-                    <button>Boston</button>
-                    <button>Delhi</button>
-                    <button>Burlington</button>
-                    <button>Sandy</button>
-                  </div>
-              
-                <!-- </div> -->
-              <!-- </div>
-            </div> -->
           </section> 
   
-        
-        <!-- <div class="row display-section">
-          <div class="col-sm-9">  -->
-            <section id= "weatherDisplay">
+          <section id= "weatherDisplay">
             <div class="weather-details">
               <div class="cityDetails">
                 <span class="city" ></span>
@@ -81,10 +69,7 @@
                 
             </div>
           </section>
-          <!-- </div>
-        </div> -->
-      <!-- </div> -->
-        
-    <script src="script1.js"></script>
+         
+    <script src="script.js"></script>
   </body>
 </html>
