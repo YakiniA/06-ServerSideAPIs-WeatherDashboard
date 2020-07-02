@@ -5,6 +5,7 @@ var temperature = $(".temperature");
 var humidity = $(".humidity");
 var windSpeed = $(".wind-speed");
 var uvIndex = $(".uvIndex");
+var setErrorDisplay = false;
 
 function WeatherDashboard() {
 
@@ -16,18 +17,16 @@ function WeatherDashboard() {
             console.log("Got the click");
             value = $(this).siblings("input").val().trim();
             console.log(value);
-            // if(value === ""){
-            //     $("#errorDisplay").attr("style" , "background-color: red; width:250px;").text("Please select/enter a city");
-            // }
-            displayDetails(value);
             displayWeatherDetails(value);
+            saveToLocalStorage(value);
         });
     });
 }
 
-function displayDetails(value){
+function saveToLocalStorage(value){
         var searchHistory;
         var div;
+      
         if(localStorage.getItem("searchHistory")){
             searchHistory =  JSON.parse(localStorage.getItem("searchHistory"));
             if(searchHistory.length>12){
@@ -37,10 +36,13 @@ function displayDetails(value){
             searchHistory = [];
         }
        if((value!=null ) && (value!="" )){  
-      
+        console.log(setErrorDisplay);
+          if(!setErrorDisplay){
+           
             searchHistory.push(value);
             localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
           }
+        }
         
       
 }
@@ -49,8 +51,8 @@ function displayDetails(value){
         event.preventDefault();
         value =$(this).html().toString();
         console.log("Value" +value);
-        displayDetails(value);
         displayWeatherDetails(value);
+        saveToLocalStorage(value);
     });
 
     let getDate = function(days){
@@ -110,7 +112,7 @@ function displayDetails(value){
        return  ('<div>' +
         '<p class="date">' + getDate(i) + '</p>' +  
         `<img src="https://openweathermap.org/img/w/${response.list[i].weather[0].icon}.png" alt=${response.list[i].weather[0].description} width='50' height='50'>` +
-        `<p class="temperature">Temperature: ${response.list[i].main.temp}&nbsp;°F</p>` +
+        `<p class="temperature">Temperature: ${response.list[i].main.temp}&nbsp;°C</p>` +
         `<p class="humidity">Humidity: ${response.list[i].main.humidity}&nbsp;%"</p>` +
         '</div>');
         }
@@ -120,9 +122,12 @@ function displayDetails(value){
 },error: function () {
     if ($("#search input").val() === ""){
       $("#errorDisplay").attr("style" , "background-color: red; width:250px;").html("Please enter/select a city"); 
+     
     }else{
       $("#errorDisplay").attr("style" , "background-color: red; width:250px;").html("No data available for that city. Sorry!!");
+     
     }
+    setErrorDisplay = true;
   }
 });
 }
@@ -131,13 +136,14 @@ function displayDetails(value){
 WeatherDashboard();
 var historyCities = JSON.parse(localStorage.getItem("searchHistory"));
 console.log("historyCities" +historyCities);
-var cityName = "Sandy";
+var cityName = "South Jordan";
 if(historyCities!=null){
 var lastCityName = historyCities[historyCities.length-1];
 displayWeatherDetails(lastCityName);
 }else{
-displayDetails(cityName);
+
 displayWeatherDetails(cityName);
+saveToLocalStorage(cityName);
 }
 
 
