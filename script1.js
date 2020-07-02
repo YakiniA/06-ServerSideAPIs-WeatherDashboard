@@ -16,6 +16,9 @@ function WeatherDashboard() {
             console.log("Got the click");
             value = $(this).siblings("input").val().trim();
             console.log(value);
+            if(value === ""){
+                $("#errorDisplay").attr("style" , "background-color: red; width:250px;").text("Please select/enter a city");
+            }
             displayDetails(value);
             displayWeatherDetails(value);
         });
@@ -41,18 +44,6 @@ function displayDetails(value){
         }
 }
 
-    //     var searchHistory = JSON.parse(localStorage.getItem("searchHistory"));
-    //     if(searchHistory!=null){
-    //         for(var values= 0; values<searchHistory.length; values++){
-             
-    //             if(searchHistory[values]!= searchHistory[values+1]){
-    //             var pCityName = $("<p style='margin:16px 0; font-size:18px;'>");
-    //             pCityName.text(searchHistory[values]);
-    //             $(".searchHistoryCity").append(pCityName);
-    //             }
-    //         }
-    // }
-
     $("#sampleSearch button").on( "click", function(event) {
         event.preventDefault();
         value =$(this).html().toString();
@@ -67,9 +58,7 @@ function displayDetails(value){
         
     }
     function displayWeatherDetails(value){
-        // "https://api.openweathermap.org/data/2.5/weather?" +
-        // "q=Bujumbura,Burundi&appid=" + APIKey  5a9ba99aa270a73fe708b6e2422c838d;
-      
+    
         var icon;
         var lat;
         var long;
@@ -133,7 +122,15 @@ function displayDetails(value){
 
 
 WeatherDashboard();
-displayDetails(value);
-
+var historyCities = JSON.parse(localStorage.getItem("searchHistory"));
+console.log("historyCities" +historyCities);
+var cityName = "Sandy";
+if(historyCities!=null){
+var lastCityName = historyCities[historyCities.length-1];
+displayWeatherDetails(lastCityName);
+}else{
+displayDetails(cityName);
+displayWeatherDetails(cityName);
+}
 
 
