@@ -101,8 +101,10 @@ function displayDetails(value){
                 method: "GET",
            success:function(response1) {  
                 console.log(JSON.stringify(response1));
-                uvIndex.attr("style", "backgroundColor: red").text("UV Index : " +response1.value);
-           }
+                uvIndex.text("UV Index : ");
+                var uvIndexValue = $("<span>").attr("style" , "background-color: red").text(response1.value);
+                uvIndex.append(uvIndexValue);
+            }
          });
 
          weatherDetails.append(cityDetails);
