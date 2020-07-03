@@ -93,7 +93,7 @@ function saveToLocalStorage(value){
           cityDetails.append($("#icon").attr("src",iconimg));
           temperature.text("Temperature : " +response.list[0].main.temp+ "°C");
           humidity.text("Humidity : " +response.list[0].main.humidity + "%");
-          windSpeed.text("Wind Speed : " +response.list[0].wind.speed );
+          windSpeed.text("Wind Speed : " +Math.round(response.list[0].wind.speed*2.236936) + "MPH" );
 
           var queryURL1 = "http://api.openweathermap.org/data/2.5/uvi?&appid=" + APIKey+ "&lat="+lat+ "&lon=" +long;
 
@@ -102,10 +102,19 @@ function saveToLocalStorage(value){
                 method: "GET",
            success:function(response1) {  
                 console.log(JSON.stringify(response1));
+                var UVIndexValue;
+                var respUVIndex = response1.value;
                 uvIndex.text("UV Index : ");
-                var uvIndexValue = $("<span>").attr("style" , "background-color: red").text(response1.value);
+                if(respUVIndex<5){
+                uvIndexValue = $("<span>").attr("style" , "background-color: yellow").text(response1.value);
+                }else if((respUVIndex<8) && (respUVIndex>5)){
+                uvIndexValue = $("<span>").attr("style" , "background-color: orange").text(response1.value);
+                }else if(respUVIndex>8){
+                uvIndexValue = $("<span>").attr("style" , "background-color: red").text(response1.value);
+
+                }
                 uvIndex.append(uvIndexValue);
-            }
+                }
          });
 
          weatherDetails.append(cityDetails);
