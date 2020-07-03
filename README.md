@@ -24,11 +24,11 @@ Server-side API used: [OpenWeather API](https://openweathermap.org/api)
 #### Screenshots
 
 <p style ="text-align:center;">
-<img src="Assets/WeatherDashboardDesktopView.jpg" width="300" alt= "Desktop View" height="350"/>
-<img src="Assets/weatherDashboardError1.jpg"  width="300" alt="Weather Dashboard Error" height="350"/>
-<img src="Assets/weatherDashboardError2.jpg" width="300" alt="Weather Dashboard Error" height="350"/>
-<img src="Assets/weatherDashboardMobileView.jpg"  width="300" alt="Mobile View" height="350"/>
-<img src="Assets/weatherDashboardMobileView2.jpg"  width="300" alt="Mobile View" height="350"/>
+<img src="Assets/WeatherDashboardDesktopView.jpg" width="450" alt= "Desktop View" height="350"/>
+<img src="Assets/weatherDashboardError1.jpg"  width="450" alt="Weather Dashboard Error" height="350"/>
+<img src="Assets/weatherDashboardError2.jpg" width="450" alt="Weather Dashboard Error" height="350"/>
+<img src="Assets/weatherDashboardMobileView.jpg"  width="450" alt="Mobile View" height="350"/>
+<img src="Assets/weatherDashboardMobileView2.jpg"  width="450" alt="Mobile View" height="350"/>
 </p>
 
 Here's the link to my developed Website : [ServerSideAPI-WeatherDashboard](https://yakinia.github.io/06-ServerSideAPIs-WeatherDashboard/)
