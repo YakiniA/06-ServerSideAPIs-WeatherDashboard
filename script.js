@@ -39,7 +39,7 @@ function saveToLocalStorage(value){
         }
        if((value!=null ) && (value!="" )){  
      
-            var queryURL = "http://api.openweathermap.org/data/2.5/weather?&q=" +value +"&appid=" +APIKey;
+            var queryURL = "https://api.openweathermap.org/data/2.5/weather?&q=" +value +"&appid=" +APIKey;
        
             $.ajax({
              url: queryURL,
@@ -75,7 +75,7 @@ function saveToLocalStorage(value){
         var lat;
         var long;
      
-        var queryURL = "http://api.openweathermap.org/data/2.5/forecast?" +"&q=" +value +"&appid=" + APIKey +"&units=metric";
+        var queryURL = "https://api.openweathermap.org/data/2.5/forecast?" +"&q=" +value +"&appid=" + APIKey +"&units=metric";
        
          $.ajax({
           url: queryURL,
@@ -88,7 +88,7 @@ function saveToLocalStorage(value){
           long = response.city.coord.lon;
           lat = response.city.coord.lat;
          
-          var iconimg = "http://openweathermap.org/img/w/" + icon + ".png";
+          var iconimg = "https://openweathermap.org/img/w/" + icon + ".png";
           cityDetails.append($(".city").text(response.city.name).append(getDate(0)));
           cityDetails.append($("#icon").attr("src",iconimg));
           temperature.text("Temperature : " +response.list[0].main.temp+ "°C");
