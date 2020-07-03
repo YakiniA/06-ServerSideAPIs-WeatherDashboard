@@ -27,8 +27,8 @@ Server-side API used: [OpenWeather API](https://openweathermap.org/api)
 <img src="Assets/WeatherDashboardDesktopView.jpg" width="450" alt= "Desktop View" height="350"/>
 <img src="Assets/weatherDashboardError1.jpg"  width="450" alt="Weather Dashboard Error" height="350"/>
 <img src="Assets/weatherDashboardError2.jpg" width="450" alt="Weather Dashboard Error" height="350"/>
-<img src="Assets/weatherDashboardMobileView.jpg"  width="450" alt="Mobile View" height="350"/>
-<img src="Assets/weatherDashboardMobileView2.jpg"  width="450" alt="Mobile View" height="350"/>
+<img src="Assets/weatherDashboardMobileView.jpg"  width="300" alt="Mobile View" height="350"/>
+<img src="Assets/weatherDashboardMobileView2.jpg"  width="300" alt="Mobile View" height="350"/>
 </p>
 
 Here's the link to my developed Website : [ServerSideAPI-WeatherDashboard](https://yakinia.github.io/06-ServerSideAPIs-WeatherDashboard/)
@@ -37,7 +37,7 @@ Here's the link to my developed Website : [ServerSideAPI-WeatherDashboard](https
 
 StackOverflow- 5 DayForecast  :[5 DayForecast](https://stackoverflow.com/questions/49640174/building-a-5-day-forecast-using-open-weather-api-ajax-and-js)<br/>
 StackOverflow- JQueryForEach : [ JQueryForEach](https://stackoverflow.com/questions/6208052/jquery-each-for-objects)<br/>
-YouTubeVideo - AJAXCall : [YouTube- AJAXCall](https://www.youtube.com/watch?v=KT6Jaxl0JM4)
+YouTubeVideo - AJAXCall : [YouTube- AJAXCall](https://www.youtube.com/watch?v=KT6Jaxl0JM4)<br/>
 Moment.js Library: [Moment.js library](https://momentjs.com/)<br/>
 Open Weather App: [Open Weather API](https://openweathermap.org/forecast5)<br/>
 W3Schools : [W3Schools- ImageAlignment](https://www.w3schools.com/howto/howto_css_image_text.asp)
