@@ -89,7 +89,8 @@ function saveToLocalStorage(value){
           lat = response.city.coord.lat;
          
           var iconimg = "http://openweathermap.org/img/w/" + icon + ".png";
-          cityDetails.append($(".city").text(response.city.name).append(getDate(0)).append($("#icon").attr("src",iconimg)));
+          cityDetails.append($(".city").text(response.city.name).append(getDate(0)));
+          cityDetails.append($("#icon").attr("src",iconimg));
           temperature.text("Temperature : " +response.list[0].main.temp+ "°C");
           humidity.text("Humidity : " +response.list[0].main.humidity + "%");
           windSpeed.text("Wind Speed : " +response.list[0].wind.speed );
