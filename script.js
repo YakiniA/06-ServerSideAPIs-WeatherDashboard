@@ -39,7 +39,7 @@ function saveToLocalStorage(value){
         }
        if((value!=null ) && (value!="" )){  
      
-            var queryURL = "https://api.openweathermap.org/data/2.5/weather?&q=" +value +"&appid=" +APIKey;
+            var queryURL = "http://api.openweathermap.org/data/2.5/weather?&q=" +value +"&appid=" +APIKey;
        
             $.ajax({
              url: queryURL,
@@ -75,7 +75,7 @@ function saveToLocalStorage(value){
         var lat;
         var long;
      
-        var queryURL = "https://api.openweathermap.org/data/2.5/forecast?" +"&q=" +value +"&appid=" + APIKey +"&units=metric";
+        var queryURL = "http://api.openweathermap.org/data/2.5/forecast?" +"&q=" +value +"&appid=" + APIKey +"&units=metric";
        
          $.ajax({
           url: queryURL,
@@ -88,14 +88,14 @@ function saveToLocalStorage(value){
           long = response.city.coord.lon;
           lat = response.city.coord.lat;
          
-          var iconimg = "https://openweathermap.org/img/w/" + icon + ".png";
+          var iconimg = "http://openweathermap.org/img/w/" + icon + ".png";
           cityDetails.append($(".city").text(response.city.name).append(getDate(0)));
           cityDetails.append($("#icon").attr("src",iconimg));
           temperature.text("Temperature : " +response.list[0].main.temp+ "°C");
           humidity.text("Humidity : " +response.list[0].main.humidity + "%");
           windSpeed.text("Wind Speed : " +response.list[0].wind.speed );
 
-          var queryURL1 = "https://api.openweathermap.org/data/2.5/uvi?&appid=" + APIKey+ "&lat="+lat+ "&lon=" +long;
+          var queryURL1 = "http://api.openweathermap.org/data/2.5/uvi?&appid=" + APIKey+ "&lat="+lat+ "&lon=" +long;
 
           $.ajax({
                 url: queryURL1,
@@ -119,7 +119,7 @@ function saveToLocalStorage(value){
        var forecast5day = function(i) {
        return  ('<div>' +
         '<p class="date">' + getDate(i) + '</p>' +  
-        `<img src="https://openweathermap.org/img/w/${response.list[i].weather[0].icon}.png" alt=${response.list[i].weather[0].description} width='50' height='50'>` +
+        `<img src="http://openweathermap.org/img/w/${response.list[i].weather[0].icon}.png" alt=${response.list[i].weather[0].description} width='50' height='50'>` +
         `<p class="temperature">Temperature: ${response.list[i].main.temp}&nbsp;°C</p>` +
         `<p class="humidity">Humidity: ${response.list[i].main.humidity}&nbsp;%"</p>` +
         '</div>');
