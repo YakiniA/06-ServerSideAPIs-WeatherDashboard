@@ -25,7 +25,11 @@
  #searchCol{
   margin: 35px;
 }
-  
+
+#submitBtn{
+  padding: 5px;
+}
+
   #weatherDisplay{
     display: flex;
     margin: 35px;
@@ -84,7 +88,7 @@
    }
 
   }
-  @media screen and (max-width: 552px) {
+  @media screen and (max-width: 596px) {
     .text-block {
   
       top: 35%;
