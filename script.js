@@ -28,9 +28,10 @@ function saveToLocalStorage(value) {
 
   if (localStorage.getItem("searchHistory")) {
     searchHistory = JSON.parse(localStorage.getItem("searchHistory"));
-    if (searchHistory.length > 6) {
-      localStorage.removeItem('searchHistory');
-    }
+    
+     if (searchHistory.length >6) {
+       localStorage.removeItem('searchHistory');
+     } 
   } else {
     searchHistory = [];
   }

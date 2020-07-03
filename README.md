@@ -1,3 +1,5 @@
+## 06 Server-Side APIs: Weather Dashboard
+
 This assignment focuses on using Server-side API for displaying Weather Dashboard. Third-party APIs give the flexibility to access their data and functionality by making requests. Building a weather dashboard with dynamically updated HTML and CSS. This application is made responsive using media queries. 
 
 Server-side API used: [OpenWeather API](https://openweathermap.org/api) 
