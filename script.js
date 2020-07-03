@@ -9,9 +9,10 @@ var APIKey="5a9ba99aa270a73fe708b6e2422c838d";
 // var setErrorDisplay = false;
 
 function WeatherDashboard() {
-
+ 
     $(document).ready(function () {
-
+    
+     
         $("#submitBtn").on("click", function(event){
             
             event.preventDefault();
@@ -27,7 +28,7 @@ function WeatherDashboard() {
 function saveToLocalStorage(value){
         var searchHistory;
         var div;
-      
+       
         if(localStorage.getItem("searchHistory")){
             searchHistory =  JSON.parse(localStorage.getItem("searchHistory"));
             if(searchHistory.length>6){
@@ -37,10 +38,7 @@ function saveToLocalStorage(value){
             searchHistory = [];
         }
        if((value!=null ) && (value!="" )){  
-        // console.log(setErrorDisplay);
-          // if(!setErrorDisplay){
-            // api.openweathermap.org/data/2.5/weather?q=London
-          
+     
             var queryURL = "http://api.openweathermap.org/data/2.5/weather?&q=" +value +"&appid=" +APIKey;
        
             $.ajax({
@@ -48,19 +46,19 @@ function saveToLocalStorage(value){
              method: "GET",
             }).then (function(response) {    
               console.log(response);
+              if(response.cod == "200"){
+                searchHistory.push(value);
+                localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+              }
             });
-            if(response.message != "city not found"){
-            searchHistory.push(value);
-            localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
-            }
         }
-     
 }
 
     $("#sampleSearch button").on( "click", function(event) {
         event.preventDefault();
         value =$(this).html().toString();
         console.log("Value" +value);
+        $('input').val('');
         displayWeatherDetails(value);
         saveToLocalStorage(value);
     });
@@ -71,7 +69,8 @@ function saveToLocalStorage(value){
         
     }
     function displayWeatherDetails(value){
-    
+      $("#errorDisplay").empty();
+     
         var icon;
         var lat;
         var long;
@@ -142,7 +141,6 @@ function saveToLocalStorage(value){
 
 WeatherDashboard();
 var historyCities = JSON.parse(localStorage.getItem("searchHistory"));
-console.log("historyCities" +historyCities);
 var cityName = "South Jordan";
 if(historyCities!=null){
 var lastCityName = historyCities[historyCities.length-1];
